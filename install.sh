@@ -49,7 +49,7 @@ call_function init_system "正在初始化系统" ${LOG_PATH}
 call_function init_repositories "正在初始化系统软件库" ${LOG_PATH}
 call_function install_basic_softwares "正在安装基本的软件" ${LOG_PATH}
 call_function install_php "正在安装 PHP" ${LOG_PATH}
-call_function install_composer "正在安装 Composer" ${LOG_PATH}
 call_function install_others "正在安装 Nginx Redis Sqlite3" ${LOG_PATH}
+call_function install_composer "正在安装 Composer" ${LOG_PATH}
 
 echo "安装完毕!"
