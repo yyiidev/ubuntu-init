@@ -9,7 +9,7 @@ WWW_USER_GROUP="www-data"
 
 source ${CURRENT_DIR}/common.sh
 
-check_root()
+check_root
 
 function init_system {
     apt update

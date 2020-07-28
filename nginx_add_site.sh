@@ -3,7 +3,7 @@
 CURRENT_DIR=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 source ${CURRENT_DIR}/common.sh
 
-check_root()
+check_root
 
 read -r -p "请输入项目名：" project
 
