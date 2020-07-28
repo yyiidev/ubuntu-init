@@ -30,7 +30,7 @@ function install_basic_softwares {
 }
 
 function install_php {
-    apt install -y php7.4-{bcmatch,cli,curl,fpm,gd,mbstring,mysql,opcache,readline,xml,zip,redis,sqlite3,exif}
+    apt install -y php7.4-{bcmath,cli,curl,fpm,gd,mbstring,mysql,opcache,readline,xml,zip,redis,sqlite3,exif}
 }
 
 function install_composer {
