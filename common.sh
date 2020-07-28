@@ -19,5 +19,8 @@ function call_function {
 
 # 检查是否为 root，如果不是提示使用 root 执行
 function check_root {
-    [ $(id -u) != "0" ] && { echo "当前账户并非 root，请用 root 账户执行安装脚本（使用命令：sudo -H -s 切换为 root）"; exit 1; }
+    if [ $(id -u) != "0" ]; then 
+        echo "当前账户并非 root，请用 root 账户执行安装脚本（使用命令：sudo -H -s 切换为 root）"; 
+        exit 1
+    fi
 }
