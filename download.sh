@@ -1,7 +1,5 @@
 #!/bin/bash
 
-{
-
 green="\e[1;32m"
 nc="\e[0m"
 
@@ -20,5 +18,3 @@ echo -e "${green}安装脚本位于： ${HOME}/ubuntu-init${nc}"
 bash ./ubuntu-init/install.sh
 
 cd - > /dev/null
-
-}

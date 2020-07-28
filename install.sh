@@ -26,11 +26,11 @@ function init_repositories {
 }
 
 function install_basic_softwares {
-    apt-get install -y curl git build-essential unzip supervisor
+    apt install -y curl git build-essential unzip supervisor
 }
 
 function install_php {
-    apt-get install -y php7.4-{bcmatch,cli,curl,fpm,gd,mbstring,mysql,opcache,readline,xml,zip,redis,sqlite3,exif}
+    apt install -y php7.4-{bcmatch,cli,curl,fpm,gd,mbstring,mysql,opcache,readline,xml,zip,redis,sqlite3,exif}
 }
 
 function install_composer {
@@ -40,7 +40,7 @@ function install_composer {
 }
 
 function install_others {
-    apt-get install -y nginx redis-server sqlite3
+    apt install -y nginx redis-server sqlite3
     chown -R ${WWW_USER}.${WWW_USER_GROUP} /var/www/
     systemctl enable nginx.service
 }
