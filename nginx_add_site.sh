@@ -7,8 +7,8 @@ check_root
 
 read -r -p "请输入项目名：" project
 
-[[ $project =~ ^[a-zA-Z\0-9_\-\.]+$ ]] || {
-    ansi -n --bold --bg-red "项目名包含非法字符"
+[[ $project =~ ^[\.0-9a-zA-Z_\-]+$ ]] || {
+    echo "项目名包含非法字符"
     exit 1
 }
 
