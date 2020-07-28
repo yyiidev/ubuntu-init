@@ -32,7 +32,7 @@ esac
 
 read -r -p "请输入项目类型【dzq/laravel】：" project_type
 
-cat ${CURRENT_DIR}/${project_type}-nginx_site_conf.tpl |
+cat ${CURRENT_DIR}/templates/${project_type}-nginx_site_conf.tpl |
     sed "s|{{domains}}|${domains}|g" |
     sed "s|{{project}}|${project}|g" |
     sed "s|{{project_dir}}|${project_dir}|g" > /etc/nginx/sites-available/${project}.conf
