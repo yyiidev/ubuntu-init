@@ -40,4 +40,10 @@ server {
     location ~ /\.ht {
         deny all;
     }
+
+    gzip on;
+    gzip_min_length 1024;
+    gzip_types text/html text/css application/x-javascript application/vnd.api+json;
+    gzip_disable "MSIE [1-6]\.";
+    gzip_comp_level 2;
 }
