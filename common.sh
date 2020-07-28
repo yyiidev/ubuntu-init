@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # 执行方法
 function call_function {
     func=$1
