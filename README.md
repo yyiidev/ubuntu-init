@@ -3,7 +3,7 @@
 ## 安装
 
 ```
-wget -qO- https://raw.githubusercontent.com/yyiidev/ubuntu-init/master/download.sh - | bash
+curl https://raw.githubusercontent.com/yyiidev/ubuntu-init/master/download.sh | bash
 ```
 
 ### 添加本地的公钥至 deployer 用户中
