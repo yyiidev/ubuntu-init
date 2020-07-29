@@ -1,5 +1,9 @@
 #!/bin/bash
 
+WWW_USER="www-data"
+WWW_USER_GROUP="www-data"
+DEPLOYER_USER="deployer"
+
 # 执行方法
 function call_function {
     func=$1

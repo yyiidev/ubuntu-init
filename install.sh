@@ -4,8 +4,6 @@ set -e
 
 CURRENT_DIR=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 LOG_PATH="${CURRENT_DIR}/ubuntu-init.log"
-WWW_USER="www-data"
-WWW_USER_GROUP="www-data"
 
 source ${CURRENT_DIR}/common.sh
 
@@ -23,6 +21,20 @@ function init_repositories {
     grep -rl ppa.launchpad.net /etc/apt/sources.list.d/ | xargs sed -i 's/http:\/\/ppa.launchpad.net/https:\/\/launchpad.proxy.ustclug.org/g'
 
     apt update
+}
+
+function init_deployer_user {
+    adduser ${DEPLOYER_USER}
+    usermod -aG ${WWW_USER_GROUP} ${DEPLOYER_USER}
+
+    sudo -H -u ${DEPLOYER_USER} sh -c 'echo "umask 022" >> ~/.bashrc'
+
+    echo "${DEPLOYER_USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+    chown ${DEPLOYER_USER}:${WWW_USER_GROUP} /var/www/html
+    chmod g+s /var/www/html
+
+    sudo -H -u ${DEPLOYER_USER} sh -c 'ssh-keygen -t rsa -b 4096 -C "deployer"'
 }
 
 function install_basic_softwares {
@@ -51,5 +63,6 @@ call_function install_basic_softwares "正在安装基本的软件" ${LOG_PATH}
 call_function install_php "正在安装 PHP" ${LOG_PATH}
 call_function install_others "正在安装 Nginx Redis Sqlite3" ${LOG_PATH}
 call_function install_composer "正在安装 Composer" ${LOG_PATH}
+call_function init_deployer_user "正在初始化 deployer 用户" ${LOG_PATH}
 
 echo "安装完毕!"
