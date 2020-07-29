@@ -34,7 +34,7 @@ function init_deployer_user {
     chown ${DEPLOYER_USER}:${WWW_USER_GROUP} /var/www/html
     chmod g+s /var/www/html
 
-    sudo -H -u ${DEPLOYER_USER} sh -c 'ssh-keygen -t rsa -b 4096 -N '' -f ~/.ssh/id_rsa'
+    sudo -H -u ${DEPLOYER_USER} sh -c 'ssh-keygen -t rsa -b 4096 -N "" -f ~/.ssh/id_rsa'
 }
 
 function install_basic_softwares {
