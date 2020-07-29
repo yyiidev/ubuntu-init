@@ -24,7 +24,7 @@ function init_repositories {
 }
 
 function init_deployer_user {
-    useradd -d /home/${DEPLOYER_USER} -m ${DEPLOYER_USER}
+    useradd -d /home/${DEPLOYER_USER} -m -s /bin/bash ${DEPLOYER_USER}
     usermod -aG ${WWW_USER_GROUP} ${DEPLOYER_USER}
 
     sudo -H -u ${DEPLOYER_USER} sh -c 'echo "umask 022" >> ~/.bashrc'
