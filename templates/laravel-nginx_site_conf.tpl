@@ -1,7 +1,7 @@
 server {
     listen 80;
     server_name {{domains}};
-    root "{{project_dir}}/public";
+    root "{{project_dir}}/current/public";
 
     index index.html index.htm index.php;
 
