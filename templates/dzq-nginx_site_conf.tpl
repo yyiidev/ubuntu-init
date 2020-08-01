@@ -21,6 +21,12 @@ server {
 
     client_max_body_size 100m;
 
+    gzip on;
+    gzip_min_length 1024;
+    gzip_types text/html text/css application/x-javascript application/vnd.api+json;
+    gzip_disable "MSIE [1-6]\.";
+    gzip_comp_level 2;
+
     location ~ \.php$ {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
         fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
@@ -37,13 +43,19 @@ server {
         fastcgi_read_timeout 300;
     }
 
+    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ {
+        expires      30d;
+        error_log off;
+        access_log /dev/null;
+    }
+    
+    location ~ .*\.(js|css)?$ {
+        expires      12h;
+        error_log off;
+        access_log /dev/null; 
+    }
+
     location ~ /\.ht {
         deny all;
     }
-
-    gzip on;
-    gzip_min_length 1024;
-    gzip_types text/html text/css application/x-javascript application/vnd.api+json;
-    gzip_disable "MSIE [1-6]\.";
-    gzip_comp_level 2;
 }
