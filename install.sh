@@ -17,6 +17,7 @@ function init_system {
 function init_repositories {
     add-apt-repository -y ppa:ondrej/php
     add-apt-repository -y ppa:nginx/stable
+    add-apt-repository ppa:certbot/certbot
 
     grep -rl ppa.launchpad.net /etc/apt/sources.list.d/ | xargs sed -i 's/http:\/\/ppa.launchpad.net/https:\/\/launchpad.proxy.ustclug.org/g'
 
@@ -52,7 +53,7 @@ function install_composer {
 }
 
 function install_others {
-    apt install -y nginx redis-server sqlite3
+    apt install -y nginx python-certbot-nginx redis-server sqlite3
     chown -R ${WWW_USER}.${WWW_USER_GROUP} /var/www/
     systemctl enable nginx.service
 }
