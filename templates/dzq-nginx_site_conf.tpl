@@ -3,7 +3,7 @@ server {
     server_name {{domains}};
     root "{{project_dir}}/current/public";
 
-    index index.php;
+    index index.php index.html;
 
     charset utf-8;
 
@@ -26,6 +26,10 @@ server {
     gzip_types text/html text/css application/x-javascript application/vnd.api+json;
     gzip_disable "MSIE [1-6]\.";
     gzip_comp_level 2;
+
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-XSS-Protection "1; mode=block";
+    add_header X-Content-Type-Options "nosniff";
 
     location ~ \.php$ {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
